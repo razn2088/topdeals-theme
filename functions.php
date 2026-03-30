@@ -1,0 +1,221 @@
+<?php
+/**
+ * TopDeals Review Theme - functions.php
+ */
+
+// Theme Setup
+add_action('after_setup_theme', function () {
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+});
+
+// Enqueue Scripts & Styles
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900', [], null);
+    wp_enqueue_style('proxima-nova', get_template_directory_uri() . '/assets/fonts/proxima-nova/style.css', [], '1.0');
+    wp_enqueue_style('expansiva', get_template_directory_uri() . '/assets/fonts/expansiva/style.css', [], '1.0');
+    wp_enqueue_style('bebas-neue', get_template_directory_uri() . '/assets/fonts/bebas-neue-pro/style.css', [], '1.0');
+    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', [], '1.1.0');
+    wp_enqueue_style('topdeals-style', get_stylesheet_uri(), [], '1.0');
+
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/assets/js/scripts.min.js', ['jquery'], '1.1.0', true);
+    wp_enqueue_script('topdeals-custom', get_template_directory_uri() . '/assets/js/custom.js', ['jquery', 'magnific-popup'], '1.0', true);
+});
+
+// Register Meta Boxes
+add_action('add_meta_boxes', 'topdeals_add_meta_boxes');
+function topdeals_add_meta_boxes() {
+    add_meta_box('topdeals_hero', 'Hero Section', 'topdeals_hero_metabox', 'page', 'normal', 'high');
+    add_meta_box('topdeals_products', 'Products (up to 10)', 'topdeals_products_metabox', 'page', 'normal', 'high');
+    add_meta_box('topdeals_featured', 'Featured Product Section', 'topdeals_featured_metabox', 'page', 'normal', 'high');
+    add_meta_box('topdeals_footer', 'Footer Settings', 'topdeals_footer_metabox', 'page', 'normal', 'default');
+}
+
+// Hero Metabox
+function topdeals_hero_metabox($post) {
+    wp_nonce_field('topdeals_save', 'topdeals_nonce');
+    $hero = get_post_meta($post->ID, '_topdeals_hero', true) ?: [];
+    $defaults = [
+        'bg_image' => '',
+        'heading' => '',
+        'subheading' => '',
+        'logo_text_1' => '',
+        'logo_text_2' => '',
+        'logo_text_3' => '',
+        'feature_1' => 'Latest Reviews',
+        'feature_2' => 'Unique Features',
+        'feature_3' => 'Comparisons',
+        'feature_4' => 'Costs & More',
+    ];
+    $hero = wp_parse_args($hero, $defaults);
+    ?>
+    <table class="form-table">
+        <tr><th>Logo Text Part 1</th><td><input type="text" name="hero[logo_text_1]" value="<?php echo esc_attr($hero['logo_text_1']); ?>" class="regular-text" placeholder="BEST"></td></tr>
+        <tr><th>Logo Text Part 2 (colored)</th><td><input type="text" name="hero[logo_text_2]" value="<?php echo esc_attr($hero['logo_text_2']); ?>" class="regular-text" placeholder="SWIMMERS"></td></tr>
+        <tr><th>Logo Text Part 3</th><td><input type="text" name="hero[logo_text_3]" value="<?php echo esc_attr($hero['logo_text_3']); ?>" class="regular-text" placeholder="CARE"></td></tr>
+        <tr><th>Background Image URL</th><td><input type="url" name="hero[bg_image]" value="<?php echo esc_url($hero['bg_image']); ?>" class="large-text" placeholder="https://..."></td></tr>
+        <tr><th>Main Heading</th><td><input type="text" name="hero[heading]" value="<?php echo esc_attr($hero['heading']); ?>" class="large-text"></td></tr>
+        <tr><th>Subheading</th><td><textarea name="hero[subheading]" class="large-text" rows="3"><?php echo esc_textarea($hero['subheading']); ?></textarea></td></tr>
+        <tr><th>Feature 1</th><td><input type="text" name="hero[feature_1]" value="<?php echo esc_attr($hero['feature_1']); ?>" class="regular-text"></td></tr>
+        <tr><th>Feature 2</th><td><input type="text" name="hero[feature_2]" value="<?php echo esc_attr($hero['feature_2']); ?>" class="regular-text"></td></tr>
+        <tr><th>Feature 3</th><td><input type="text" name="hero[feature_3]" value="<?php echo esc_attr($hero['feature_3']); ?>" class="regular-text"></td></tr>
+        <tr><th>Feature 4</th><td><input type="text" name="hero[feature_4]" value="<?php echo esc_attr($hero['feature_4']); ?>" class="regular-text"></td></tr>
+    </table>
+    <?php
+}
+
+// Products Metabox
+function topdeals_products_metabox($post) {
+    $products = get_post_meta($post->ID, '_topdeals_products', true) ?: [];
+    $count = max(count($products), 1);
+    ?>
+    <div id="topdeals-products-wrapper">
+    <?php for ($i = 0; $i < 10; $i++) :
+        $p = isset($products[$i]) ? $products[$i] : [];
+        $defaults = [
+            'name' => '', 'url' => '', 'image' => '', 'rating_num' => '',
+            'rating_stars' => '', 'rating_text' => '', 'description' => '',
+            'reviews_count' => '', 'badge_text' => '',
+            'pros' => '', 'cons' => '',
+        ];
+        $p = wp_parse_args($p, $defaults);
+        $display = ($i < $count) ? '' : 'display:none;';
+    ?>
+        <div class="topdeals-product-block" style="border:1px solid #ccc; padding:15px; margin:10px 0; background:#f9f9f9; <?php echo $display; ?>">
+            <h3>Product #<?php echo $i + 1; ?></h3>
+            <table class="form-table">
+                <tr><th>Product Name</th><td><input type="text" name="products[<?php echo $i; ?>][name]" value="<?php echo esc_attr($p['name']); ?>" class="large-text"></td></tr>
+                <tr><th>Product URL</th><td><input type="url" name="products[<?php echo $i; ?>][url]" value="<?php echo esc_url($p['url']); ?>" class="large-text"></td></tr>
+                <tr><th>Product Image URL</th><td><input type="url" name="products[<?php echo $i; ?>][image]" value="<?php echo esc_url($p['image']); ?>" class="large-text"></td></tr>
+                <tr><th>Rating Number (e.g. 9.6)</th><td><input type="text" name="products[<?php echo $i; ?>][rating_num]" value="<?php echo esc_attr($p['rating_num']); ?>" class="small-text"></td></tr>
+                <tr><th>Star Rating (1-5, e.g. 4.47)</th><td><input type="text" name="products[<?php echo $i; ?>][rating_stars]" value="<?php echo esc_attr($p['rating_stars']); ?>" class="small-text"></td></tr>
+                <tr><th>Rating Text (e.g. Outstanding)</th><td><input type="text" name="products[<?php echo $i; ?>][rating_text]" value="<?php echo esc_attr($p['rating_text']); ?>" class="regular-text"></td></tr>
+                <tr><th>Reviews Count (e.g. 600)</th><td><input type="text" name="products[<?php echo $i; ?>][reviews_count]" value="<?php echo esc_attr($p['reviews_count']); ?>" class="small-text"></td></tr>
+                <tr><th>Badge Text</th><td><input type="text" name="products[<?php echo $i; ?>][badge_text]" value="<?php echo esc_attr($p['badge_text']); ?>" class="regular-text" placeholder="Our Pick for 2024"></td></tr>
+                <tr><th>Description</th><td><textarea name="products[<?php echo $i; ?>][description]" class="large-text" rows="4"><?php echo esc_textarea($p['description']); ?></textarea></td></tr>
+                <tr><th>Pros (one per line)</th><td><textarea name="products[<?php echo $i; ?>][pros]" class="large-text" rows="4"><?php echo esc_textarea($p['pros']); ?></textarea></td></tr>
+                <tr><th>Cons (one per line)</th><td><textarea name="products[<?php echo $i; ?>][cons]" class="large-text" rows="4"><?php echo esc_textarea($p['cons']); ?></textarea></td></tr>
+            </table>
+        </div>
+    <?php endfor; ?>
+    </div>
+    <button type="button" class="button" onclick="
+        var blocks = document.querySelectorAll('.topdeals-product-block');
+        for(var i=0; i<blocks.length; i++){
+            if(blocks[i].style.display==='none'){blocks[i].style.display=''; break;}
+        }
+    ">+ Add Product</button>
+    <?php
+}
+
+// Featured Product Metabox
+function topdeals_featured_metabox($post) {
+    $feat = get_post_meta($post->ID, '_topdeals_featured', true) ?: [];
+    $defaults = [
+        'heading' => '',
+        'avatar_url' => '',
+        'intro_text' => '',
+        'product_heading' => '',
+        'product_image' => '',
+        'product_description' => '',
+        'product_url' => '',
+    ];
+    $feat = wp_parse_args($feat, $defaults);
+    ?>
+    <table class="form-table">
+        <tr><th>Section Heading</th><td><input type="text" name="featured[heading]" value="<?php echo esc_attr($feat['heading']); ?>" class="large-text"></td></tr>
+        <tr><th>Avatar Image URL</th><td><input type="url" name="featured[avatar_url]" value="<?php echo esc_url($feat['avatar_url']); ?>" class="large-text"></td></tr>
+        <tr><th>Intro Text</th><td><textarea name="featured[intro_text]" class="large-text" rows="4"><?php echo esc_textarea($feat['intro_text']); ?></textarea></td></tr>
+        <tr><th>Product Heading</th><td><input type="text" name="featured[product_heading]" value="<?php echo esc_attr($feat['product_heading']); ?>" class="large-text"></td></tr>
+        <tr><th>Product Image URL</th><td><input type="url" name="featured[product_image]" value="<?php echo esc_url($feat['product_image']); ?>" class="large-text"></td></tr>
+        <tr><th>Product Description</th><td><textarea name="featured[product_description]" class="large-text" rows="6"><?php echo esc_textarea($feat['product_description']); ?></textarea></td></tr>
+        <tr><th>Product URL</th><td><input type="url" name="featured[product_url]" value="<?php echo esc_url($feat['product_url']); ?>" class="large-text"></td></tr>
+    </table>
+    <?php
+}
+
+// Footer Metabox
+function topdeals_footer_metabox($post) {
+    $footer = get_post_meta($post->ID, '_topdeals_footer', true) ?: [];
+    $defaults = [
+        'logo_text' => '',
+        'site_name' => '',
+        'terms' => '',
+        'privacy' => '',
+        'contact_info' => '',
+        'disclaimer_1' => '',
+        'disclaimer_2' => '',
+        'disclaimer_3' => '',
+    ];
+    $footer = wp_parse_args($footer, $defaults);
+    ?>
+    <table class="form-table">
+        <tr><th>Footer Logo Text</th><td><input type="text" name="footer_data[logo_text]" value="<?php echo esc_attr($footer['logo_text']); ?>" class="regular-text"></td></tr>
+        <tr><th>Site Name (copyright)</th><td><input type="text" name="footer_data[site_name]" value="<?php echo esc_attr($footer['site_name']); ?>" class="regular-text"></td></tr>
+        <tr><th>Terms & Conditions</th><td><textarea name="footer_data[terms]" class="large-text" rows="8"><?php echo esc_textarea($footer['terms']); ?></textarea></td></tr>
+        <tr><th>Privacy Policy</th><td><textarea name="footer_data[privacy]" class="large-text" rows="8"><?php echo esc_textarea($footer['privacy']); ?></textarea></td></tr>
+        <tr><th>Contact Info</th><td><textarea name="footer_data[contact_info]" class="large-text" rows="4"><?php echo esc_textarea($footer['contact_info']); ?></textarea></td></tr>
+        <tr><th>Disclaimer Line 1</th><td><input type="text" name="footer_data[disclaimer_1]" value="<?php echo esc_attr($footer['disclaimer_1']); ?>" class="large-text"></td></tr>
+        <tr><th>Disclaimer Line 2</th><td><input type="text" name="footer_data[disclaimer_2]" value="<?php echo esc_attr($footer['disclaimer_2']); ?>" class="large-text"></td></tr>
+        <tr><th>Disclaimer Line 3</th><td><input type="text" name="footer_data[disclaimer_3]" value="<?php echo esc_attr($footer['disclaimer_3']); ?>" class="large-text"></td></tr>
+    </table>
+    <?php
+}
+
+// Save Meta Boxes
+add_action('save_post', function ($post_id) {
+    if (!isset($_POST['topdeals_nonce']) || !wp_verify_nonce($_POST['topdeals_nonce'], 'topdeals_save')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['hero'])) {
+        update_post_meta($post_id, '_topdeals_hero', array_map('sanitize_text_field', $_POST['hero']));
+    }
+    if (isset($_POST['products'])) {
+        $products = [];
+        foreach ($_POST['products'] as $p) {
+            if (!empty($p['name'])) {
+                $products[] = [
+                    'name' => sanitize_text_field($p['name']),
+                    'url' => esc_url_raw($p['url']),
+                    'image' => esc_url_raw($p['image']),
+                    'rating_num' => sanitize_text_field($p['rating_num']),
+                    'rating_stars' => sanitize_text_field($p['rating_stars']),
+                    'rating_text' => sanitize_text_field($p['rating_text']),
+                    'reviews_count' => sanitize_text_field($p['reviews_count']),
+                    'badge_text' => sanitize_text_field($p['badge_text']),
+                    'description' => sanitize_textarea_field($p['description']),
+                    'pros' => sanitize_textarea_field($p['pros']),
+                    'cons' => sanitize_textarea_field($p['cons']),
+                ];
+            }
+        }
+        update_post_meta($post_id, '_topdeals_products', $products);
+    }
+    if (isset($_POST['featured'])) {
+        $feat = $_POST['featured'];
+        update_post_meta($post_id, '_topdeals_featured', [
+            'heading' => sanitize_text_field($feat['heading']),
+            'avatar_url' => esc_url_raw($feat['avatar_url']),
+            'intro_text' => sanitize_textarea_field($feat['intro_text']),
+            'product_heading' => sanitize_text_field($feat['product_heading']),
+            'product_image' => esc_url_raw($feat['product_image']),
+            'product_description' => sanitize_textarea_field($feat['product_description']),
+            'product_url' => esc_url_raw($feat['product_url']),
+        ]);
+    }
+    if (isset($_POST['footer_data'])) {
+        $f = $_POST['footer_data'];
+        update_post_meta($post_id, '_topdeals_footer', [
+            'logo_text' => sanitize_text_field($f['logo_text']),
+            'site_name' => sanitize_text_field($f['site_name']),
+            'terms' => wp_kses_post($f['terms']),
+            'privacy' => wp_kses_post($f['privacy']),
+            'contact_info' => sanitize_textarea_field($f['contact_info']),
+            'disclaimer_1' => sanitize_text_field($f['disclaimer_1']),
+            'disclaimer_2' => sanitize_text_field($f['disclaimer_2']),
+            'disclaimer_3' => sanitize_text_field($f['disclaimer_3']),
+        ]);
+    }
+});

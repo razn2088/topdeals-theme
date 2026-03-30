@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Expansiva Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Expansiva Regular'), url('Expansiva.woff') format('woff');
+}
+@font-face {
+    font-family: 'Expansiva Italic';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Expansiva Italic'), url('Expansiva italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'Expansiva Bold Italic';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Expansiva Bold Italic'), url('Expansiva bold italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'Expansiva Bold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Expansiva Bold'), url('Expansiva bold.woff') format('woff');
+}
