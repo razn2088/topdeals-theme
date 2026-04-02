@@ -220,8 +220,8 @@ add_action('save_post', function ($post_id) {
     }
 });
 
-// Output inline CSS fixes to match original HTML exactly
-add_action('wp_head', function() {
+// Output inline CSS fixes to match original HTML exactly (wp_footer to load AFTER stylesheets)
+add_action('wp_footer', function() {
     $tdir = get_template_directory_uri();
     ?>
     <style>
