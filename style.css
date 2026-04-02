@@ -591,3 +591,501 @@ h3 a:hover { color: #FFF !important; background: #3e8522; }
     ul.s1list { padding: 10px 0 0 0; width: 288px; }
     ul.s1list li { padding: 0 0 0 13px; font-size: 15px; line-height: 18px; }
 }
+
+/* ==========================================
+   WORDPRESS OVERRIDE - Match original HTML
+   ========================================== */
+
+/* Reset WP defaults that break layout */
+body.page-template-page-review {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+}
+body.page-template-page-review *,
+body.page-template-page-review *::before,
+body.page-template-page-review *::after {
+    box-sizing: border-box;
+}
+
+/* Remove WP admin bar spacing */
+body.page-template-page-review.admin-bar .header {
+    margin-top: 0;
+}
+
+/* Header - exact match */
+.header {
+    height: 90px !important;
+    border-bottom: 1px solid #e0dac6 !important;
+    background: #fff !important;
+    display: flex;
+    align-items: center;
+}
+.headwrapper {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 90px !important;
+    width: 960px !important;
+    margin: 0 auto !important;
+}
+.headbox {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+.headbox .logo-title {
+    font: 1.5rem "ProximaNova Regular", sans-serif !important;
+    color: rgb(93, 93, 93) !important;
+    text-decoration: none !important;
+    letter-spacing: 0 !important;
+}
+.headbox .logo-title .logo-title__color {
+    color: rgb(93, 93, 93) !important;
+}
+.hdrtxt {
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #414141 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.hdrtxt a {
+    color: #414141 !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+}
+
+/* Hero/Banner Section - exact match */
+.section1 {
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    height: 318px !important;
+    padding: 52px 0 0 0 !important;
+    display: table !important;
+    width: 100% !important;
+}
+.section1 .s1hding {
+    font-size: 37px !important;
+    font-family: "ProximaNova Light", sans-serif !important;
+    color: #fff !important;
+    line-height: 1.564 !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+.section1 .ourTeam {
+    font-size: 23px !important;
+    font-family: 'ProximaNova Regular', sans-serif !important;
+    color: #fff !important;
+    line-height: 1.333 !important;
+    margin: 0 !important;
+    padding: 6px 0 0 0 !important;
+}
+
+/* Feature list icons - small inline icons */
+ul.s1list {
+    padding: 5px 0 0 0 !important;
+    margin-top: 5px !important;
+    list-style: none !important;
+}
+ul.s1list li {
+    float: left !important;
+    display: inline-block !important;
+    padding: 0 0 0 14px !important;
+    margin: 0 14px 0 0 !important;
+    font-size: 20px !important;
+    line-height: 22px !important;
+    color: #fff !important;
+    font-weight: normal !important;
+    list-style: none !important;
+    background: none !important;
+}
+ul.s1list li:first-child {
+    padding-left: 0 !important;
+}
+ul.s1list li span {
+    font-size: 16px !important;
+    color: #fff !important;
+}
+ul.s1list li img {
+    width: 24px !important;
+    height: 24px !important;
+    vertical-align: middle !important;
+    margin-right: 5px !important;
+}
+
+/* Clock icon and update bar */
+.s1txt2 {
+    padding: 0 0 0 22px !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    color: #02172c !important;
+    text-align: left !important;
+    margin: 46px 0 0 0 !important;
+    position: relative !important;
+}
+.s1txt2 > img {
+    width: 20px !important;
+    height: 20px !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important;
+}
+
+/* Products section */
+.section2 {
+    padding: 60px 0 !important;
+    background: #fff !important;
+}
+.sec2-box1 {
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 4px !important;
+}
+
+/* Product box layout - 3 column */
+.s2bx1-inbx1 {
+    position: relative !important;
+    padding: 42px 0 !important;
+    margin: 0 !important;
+    width: 97.92% !important;
+    display: table !important;
+    border-top: 1px solid #e1e1e1 !important;
+}
+.s2bx1-inbx1.box-1 {
+    border-top: none !important;
+}
+
+/* Left column - product image */
+.inbx-lft {
+    float: left !important;
+    display: inline-block !important;
+    width: 27.55% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+}
+.inbx-logo1 {
+    margin: 30px auto 0 auto !important;
+    display: block !important;
+    max-width: 200px !important;
+    max-height: 200px !important;
+}
+
+/* Middle column - product info */
+.inbx-mid {
+    float: left !important;
+    display: inline-block !important;
+    width: 53% !important;
+    border-left: 1px solid #e1e1e1 !important;
+    min-height: 150px !important;
+    box-sizing: border-box !important;
+}
+.inbx-midhding {
+    font-family: "ProximaNova SemiBold", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+    color: #02172c !important;
+    text-align: left !important;
+    padding: 0 0 0 67px !important;
+    margin-bottom: 20px !important;
+    border: none !important;
+}
+.inbx-midhding a {
+    color: #02172c !important;
+    text-decoration: none !important;
+}
+.indx-midsbhding p {
+    font: 1rem "ProximaNova Regular", sans-serif !important;
+    color: #02172c !important;
+    padding: 0 0 0 15px !important;
+    margin: 0 !important;
+}
+
+/* Pros/Cons */
+.inbx-proscons {
+    display: flex !important;
+    justify-content: space-around !important;
+    margin-top: 55px !important;
+}
+.inbx-proscons .inbx-midlist {
+    padding: 12px 0 0 67px !important;
+    list-style: none !important;
+}
+.inbx-proscons .inbx-midlist p {
+    color: #4b4b4b !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    margin: 0 0 5px 0 !important;
+    padding: 0 !important;
+}
+.inbx-proscons .inbx-midlist li {
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #4b4b4b !important;
+    text-align: left !important;
+    padding: 0 0 0 24px !important;
+    margin: 4px 0 0 0 !important;
+    list-style: none !important;
+    background: none !important;
+    position: relative !important;
+}
+.inbx-proscons .inbx-midlist li::before {
+    content: "\2022" !important;
+    position: absolute !important;
+    left: 8px !important;
+    color: #4b4b4b !important;
+}
+
+/* Rating & Shop Now - right column */
+.inbx-ratshop {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    top: 100px !important;
+    float: right !important;
+    width: auto !important;
+}
+.inbx-midRight {
+    margin: 0 0 40px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: auto !important;
+}
+.intRate {
+    color: #559bd6 !important;
+    font-size: 42px !important;
+    font-weight: 300 !important;
+    margin-bottom: 10px !important;
+    display: block !important;
+    text-align: center !important;
+}
+.textRate {
+    color: #559bd6 !important;
+    font-size: 16px !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+/* Shop Now Button - exact match */
+.btn1 {
+    height: 50px !important;
+    width: 215px !important;
+    background: #4a952d !important;
+    border-radius: 4px !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    color: #fff !important;
+    text-align: center !important;
+    line-height: 50px !important;
+    margin: 16px auto 0 auto !important;
+    display: block !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+.btn1:hover {
+    background: #3e8522 !important;
+    color: #fff !important;
+}
+.s2bx1-inbx1 .btn1 {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 50px !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+.s2bx1-inbx1 .btn1 img[alt="chevron icon"] {
+    width: 10px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+}
+
+/* Ribbon badge */
+.ribbon {
+    background: #559bd6 !important;
+    height: 40px !important;
+    width: 230px !important;
+    display: inline-block !important;
+    position: relative !important;
+    color: #fff !important;
+    line-height: 2.3 !important;
+    font-size: 16px !important;
+    text-align: center !important;
+    margin-left: 21px !important;
+    z-index: 9 !important;
+}
+.ribbon a {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+}
+.ribbon span {
+    font-weight: 700 !important;
+}
+.ribbon:after {
+    content: '' !important;
+    border: 20px solid #559bd6 !important;
+    border-right-color: white !important;
+    border-right-width: 12px !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+/* Number badges */
+.one-box {
+    position: absolute !important;
+    left: 0 !important;
+    top: -3px !important;
+}
+.box-nr-1 {
+    top: 23px !important;
+    left: -23px !important;
+}
+.box-nr-2 {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 42px !important;
+    text-align: center !important;
+    color: #282828 !important;
+    height: 46px !important;
+    width: 48px !important;
+}
+.box-nr-2 a {
+    color: #282828 !important;
+    text-decoration: none !important;
+}
+
+/* Star ratings */
+.stars {
+    --percent: calc(var(--rating) / 5 * 100%) !important;
+    display: inline-block !important;
+    font-size: 26px !important;
+    font-family: Times, serif !important;
+    line-height: 1 !important;
+}
+.stars::before {
+    content: '\2605\2605\2605\2605\2605' !important;
+    background: linear-gradient(90deg, #ffd205 var(--percent), #fbea9e var(--percent)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+.inbx-lfttxt {
+    font-weight: 300 !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #4b4b4b !important;
+    text-align: center !important;
+    padding: 10px 0 0 0 !important;
+}
+.inbx-lfttxt a {
+    color: #4b4b4b !important;
+    text-decoration: none !important;
+}
+.inbx-lfttxt span {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+}
+
+/* Featured product section */
+.s-productsUp {
+    right: 0 !important;
+    margin-top: 35px !important;
+}
+.s-productsUp .ourTop h2 {
+    margin: 0 0 22px !important;
+    font: normal 30px 'ProximaNova Regular', sans-serif !important;
+    border-top: 0 !important;
+    color: #02172c !important;
+    text-align: center !important;
+}
+.s-productsUp .ourTop .ourTop__desc {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+}
+.s-productsUp .ourTop .ourTop__desc img {
+    border-radius: 50% !important;
+    width: 130px !important;
+    height: 130px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+.s-productsUp .ourTop p {
+    font-size: 19px !important;
+    line-height: 1.4 !important;
+    color: #02172c !important;
+    margin: 0 !important;
+}
+.s-productsUp .product-1 h2 {
+    margin: 22px 0 !important;
+    font: 23px "ProximaNova SemiBold", sans-serif !important;
+    letter-spacing: 1px !important;
+    color: #fff !important;
+    background-color: #5d5d5d !important;
+    padding: 15px 20px !important;
+    border: none !important;
+}
+.s-productsUp .product-1 .left-col {
+    width: 35% !important;
+    max-height: 450px !important;
+    text-align: center !important;
+}
+.s-productsUp .product-1 .right-col {
+    width: 65% !important;
+    padding-left: 20px !important;
+}
+.s-productsUp .product-1 .right-col p {
+    color: #02172c !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 15px !important;
+}
+.row-block {
+    display: flex !important;
+    align-items: flex-start !important;
+}
+.s-productsUp .btn1.btn1mod {
+    margin-top: 20px !important;
+}
+
+/* Footer - exact match */
+footer {
+    padding: 45px 0 !important;
+    border-top: 1px solid #dadada !important;
+    background: #fff !important;
+}
+.footer-logo-txt {
+    font: 1.5rem "ProximaNova Regular", sans-serif !important;
+    color: rgb(220, 220, 220) !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}
+
+/* Hide mobile rating on desktop */
+.inbx-midRight-mb {
+    display: none !important;
+}
+
+/* Remove WP default list bullets */
+body.page-template-page-review ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+body.page-template-page-review ul li {
+    background-image: none !important;
+}
+
+/* Override WP heading defaults */
+body.page-template-page-review h1,
+body.page-template-page-review h2 {
+    font-family: "ProximaNova Regular", sans-serif !important;
+}
