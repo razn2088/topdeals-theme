@@ -123,7 +123,7 @@ $theme_uri = get_template_directory_uri();
                                 <span class="textRate"><?php echo esc_html($product['rating_text']); ?></span>
                             </div>
                             <div class="inbx-rgt">
-                                <a href="<?php echo esc_url($product['url']); ?>" target="_blank" class="btn1">Shop Now <img src="<?php echo $theme_uri; ?>/assets/img/сhevron-right-icon.png" alt="chevron icon"><img src="<?php echo $theme_uri; ?>/assets/img/сhevron-right-icon.png" alt="chevron icon"></a>
+                                <a href="<?php echo esc_url($product['url']); ?>" target="_blank" class="btn1">Shop on <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo"></a>
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ $theme_uri = get_template_directory_uri();
                         <div class="right-col">
                             <p><?php echo nl2br(esc_html($featured['product_description'])); ?></p>
                             <?php if (!empty($featured['product_url'])) : ?>
-                            <a href="<?php echo esc_url($featured['product_url']); ?>" class="btn1 btn1mod" target="_blank">Shop Now <img src="<?php echo $theme_uri; ?>/assets/img/сhevron-right-icon.png" alt="chevron icon"><img src="<?php echo $theme_uri; ?>/assets/img/сhevron-right-icon.png" alt="chevron icon"></a>
+                            <a href="<?php echo esc_url($featured['product_url']); ?>" class="btn1 btn1mod" target="_blank">Shop on <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo"></a>
                             <?php endif; ?>
                         </div>
                     </div>
