@@ -219,3 +219,91 @@ add_action('save_post', function ($post_id) {
         ]);
     }
 });
+
+// Output inline CSS fixes to match original HTML exactly
+add_action('wp_head', function() {
+    $tdir = get_template_directory_uri();
+    ?>
+    <style>
+    /* Hero icons */
+    ul.s1list li img{width:24px!important;height:25px!important;vertical-align:middle!important;margin-right:5px!important}
+    .s1txt2>img{width:24px!important;height:28px!important;vertical-align:middle!important}
+    ul.s1list li{float:left!important;display:inline-block!important;padding:0 0 0 14px!important;margin:0 14px 0 0!important;font-size:20px!important;color:#fff!important;list-style:none!important;background:none!important}
+    ul.s1list li:first-child{padding-left:0!important}
+    ul.s1list li:nth-child(2),ul.s1list li:nth-child(3),ul.s1list li:nth-child(4){border-left:1px solid rgba(255,255,255,.4)!important}
+    /* Disclosure bar - grey rectangle background */
+    .s1txt2{color:#fff!important;background:rgba(180,190,195,.55)!important;padding:12px 15px 12px 50px!important;margin:30px 0 0 0!important;position:relative!important;display:inline-block!important}
+    .s1txt2 .span1{color:#fff!important;font-weight:400!important}
+    .s1txt2 .span2{color:rgba(255,255,255,.7)!important;font-size:16px!important;text-decoration:underline!important}
+    .s1txt2 .s1txt2__right{color:#fff!important}
+    /* Product box buttons */
+    .s2bx1-inbx1 .btn1{height:60px!important;width:220px!important;max-width:220px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:18px!important;color:#fff!important;text-align:center!important;line-height:60px!important;display:block!important;text-decoration:none!important;padding:0!important;margin:0!important}
+    .s2bx1-inbx1 .btn1:hover{background:rgb(90,131,135)!important;color:#fff!important}
+    .s2bx1-inbx1 .btn1 img[alt="chevron icon"]{width:10px!important;height:16px!important;vertical-align:middle!important}
+    /* Featured button */
+    .s-productsUp .btn1.btn1mod{width:250px!important;max-width:250px!important;height:59px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:19px!important;line-height:59px!important;padding:0!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important}
+    /* Rating */
+    .intRate{color:rgb(85,155,214)!important;font-size:60px!important;font-weight:300!important;display:block!important;text-align:center!important;line-height:1.1!important}
+    .textRate{color:rgb(85,155,214)!important;font-size:20px!important;display:block!important;text-align:center!important}
+    .inbx-ratshop{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;position:relative!important;top:60px!important}
+    .inbx-midRight{margin:0 0 30px 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important}
+    /* Product title */
+    .inbx-midhding{border:none!important;padding:0 0 0 67px!important;margin-bottom:20px!important;font-size:20px!important}
+    .inbx-midhding a{color:#02172c!important;text-decoration:none!important}
+    .indx-midsbhding p{color:#02172c!important;padding:0 0 0 15px!important}
+    /* Ribbon #1 */
+    .ribbon{background:rgb(85,155,214)!important;height:40px!important;width:230px!important}
+    .ribbon a{color:#fff!important;text-decoration:none!important;font-weight:400!important;font-size:16px!important}
+    .ribbon span{font-weight:700!important}
+    .ribbon:after{border:20px solid rgb(85,155,214)!important;border-right-color:white!important;border-right-width:12px!important}
+    /* Number badges #2-5 grey flag */
+    .box-nr-2{background:#6b6b6b!important;color:#fff!important;width:62px!important;height:34px!important;font-size:17px!important;font-weight:700!important;line-height:34px!important;text-align:center!important;display:inline-block!important;position:relative!important}
+    .box-nr-2:after{content:''!important;border:17px solid #6b6b6b!important;border-right-color:transparent!important;border-right-width:10px!important;position:absolute!important;top:0!important;right:-10px!important}
+    .box-nr-2 a{color:#fff!important;text-decoration:none!important;font-weight:700!important}
+    /* Left column - centered */
+    .inbx-lft{text-align:center!important}
+    .inbx-logo1{max-width:200px!important;max-height:250px!important;margin:30px auto 10px auto!important;display:block!important}
+    /* Stars bigger, centered */
+    .inbx-lft .rating{display:block!important;text-align:center!important;margin:10px 0 5px 0!important}
+    .inbx-lft .stars{font-size:30px!important}
+    .inbx-lft .rating>span{font-size:30px!important}
+    .inbx-lfttxt{text-align:center!important;font-size:16px!important;line-height:22px!important;color:#4b4b4b!important;padding:5px 0 0 0!important}
+    .inbx-lfttxt span{font-weight:500!important;font-size:18px!important}
+    .inbx-lfttxt a{color:rgb(85,155,214)!important;text-decoration:none!important}
+    /* Header */
+    .headbox .logo-title{color:rgb(93,93,93)!important;text-decoration:none!important}
+    .hdrtxt{font-size:14px!important;text-transform:uppercase!important}
+    .hdrtxt a{color:#414141!important;text-decoration:none!important}
+    /* Hero heading */
+    .section1 .s1hding{font-size:37px!important;border:none!important;margin:0!important;padding:0!important;color:#fff!important}
+    /* Pros/Cons */
+    .inbx-proscons{display:flex!important;justify-content:space-around!important;margin-top:55px!important}
+    .inbx-proscons .inbx-midlist{padding:12px 0 0 67px!important}
+    .inbx-proscons .inbx-midlist p{color:#4b4b4b!important;font-weight:700!important}
+    .inbx-proscons .inbx-midlist li{font-size:16px!important;color:#4b4b4b!important;padding:0 0 0 24px!important;margin:4px 0 0 0!important;list-style:none!important;background:none!important}
+    /* Featured */
+    .s-productsUp .ourTop h2{border-top:0!important;text-align:center!important;color:#02172c!important}
+    .s-productsUp .ourTop .ourTop__desc{display:flex!important;align-items:flex-start!important;gap:20px!important}
+    .s-productsUp .ourTop .ourTop__desc img{border-radius:50%!important;width:130px!important;height:130px!important;object-fit:cover!important;flex-shrink:0!important}
+    .s-productsUp .ourTop p{font-size:19px!important;line-height:1.4!important;color:#02172c!important}
+    .s-productsUp .product-1 h2{color:#fff!important;background-color:#5d5d5d!important;padding:24px 0 24px 21px!important;border:none!important;letter-spacing:1px!important;margin:22px 0!important}
+    .s-productsUp .product-1 .right-col p{color:#02172c!important;font-size:16px!important;line-height:1.6!important}
+    /* Stars */
+    .rating>span{color:#ffd203!important}
+    .rating>span.no-rate{color:#fbea9e!important}
+    /* Footer */
+    .footer-logo-txt{color:rgb(220,220,220)!important;text-align:center!important}
+    .ftrtxt{color:#575757!important}
+    /* Remove WP defaults */
+    ul.s1list,ul.inbx-midlist,ul.nav_footer{list-style:none!important;padding-left:0!important}
+    ul.s1list li,ul.inbx-midlist li,ul.nav_footer li{background-image:none!important;list-style:none!important}
+    .inbx-midRight-mb{display:none!important}
+    @media(max-width:767px){
+        .inbx-midRight-mb{display:flex!important;flex-direction:column!important;align-items:center!important;margin-top:25px!important}
+        .inbx-midRight{display:none!important}
+        .inbx-ratshop{top:0!important}
+        .s2bx1-inbx1 .btn1{width:150px!important;max-width:150px!important;margin-top:40px!important}
+    }
+    </style>
+    <?php
+}, 999);
