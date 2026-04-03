@@ -325,8 +325,12 @@ add_action('wp_footer', function() {
     .rating>span{color:#ffd203!important}
     .rating>span.no-rate{color:#fbea9e!important}
     /* Footer */
-    .footer-logo-txt{color:rgb(220,220,220)!important;text-align:center!important}
-    .ftrtxt{color:#575757!important}
+    footer{background:#02172c!important;padding:40px 0!important}
+    .footer-logo-txt{color:rgba(255,255,255,.6)!important;text-align:center!important}
+    .ftrtxt{color:rgba(255,255,255,.8)!important;text-align:center!important}
+    .nav_footer{text-align:center!important;display:flex!important;justify-content:center!important;gap:30px!important}
+    .nav_footer li a{color:#fff!important;text-decoration:underline!important}
+    .nav_footer li a:hover{color:rgba(255,255,255,.7)!important}
     /* Remove WP defaults */
     ul.s1list,ul.inbx-midlist,ul.nav_footer{list-style:none!important;padding-left:0!important}
     ul.s1list li,ul.inbx-midlist li,ul.nav_footer li{background-image:none!important;list-style:none!important}
