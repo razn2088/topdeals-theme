@@ -262,10 +262,14 @@ add_action('wp_footer', function() {
     .s1txt2 .span2{color:rgba(255,255,255,.7)!important;font-size:16px!important;text-decoration:underline!important}
     .s1txt2 .s1txt2__right{color:#fff!important}
     /* Product box buttons */
-    .s2bx1-inbx1 .btn1{height:50px!important;width:190px!important;max-width:190px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;color:#fff!important;text-align:center!important;line-height:50px!important;display:inline-block!important;text-decoration:none!important;padding:0 15px!important;margin:0!important;font-weight:700!important}
+    .s2bx1-inbx1 .btn1{height:53px!important;width:176px!important;max-width:176px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:17px!important;color:#fff!important;text-align:center!important;line-height:53px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;text-decoration:none!important;padding:0 12px!important;margin:0!important;font-weight:700!important}
+    .s2bx1-inbx1 .btn1 .btn-text{font-weight:700!important;font-size:15px!important;line-height:1!important;color:#fff!important}
+    .s2bx1-inbx1 .btn1 .amazon-logo{height:22px!important;filter:brightness(0) invert(1)!important;vertical-align:middle!important;margin-top:2px!important}
     .s2bx1-inbx1 .btn1:hover{background:rgb(90,131,135)!important;color:#fff!important}
     /* Featured button */
-    .s-productsUp .btn1.btn1mod{width:210px!important;max-width:210px!important;height:50px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;line-height:50px!important;padding:0 15px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:inline-block!important;font-weight:700!important}
+    .s-productsUp .btn1.btn1mod{width:210px!important;max-width:210px!important;height:53px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:17px!important;line-height:53px!important;padding:0 12px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;font-weight:700!important}
+    .s-productsUp .btn1.btn1mod .btn-text{font-weight:700!important;font-size:15px!important;line-height:1!important;color:#fff!important}
+    .s-productsUp .btn1.btn1mod .amazon-logo{height:22px!important;filter:brightness(0) invert(1)!important;vertical-align:middle!important;margin-top:2px!important}
     /* Best Overall section */
     .s2sub-hding{color:#fff!important;background-color:#5d5d5d!important;padding:24px 0 24px 21px!important;border:none!important;letter-spacing:1px!important;margin:40px 0 0 0!important;font-size:24px!important}
     .best-overall-list{list-style:none!important;padding:0 0 0 67px!important;margin:0!important}
@@ -274,7 +278,7 @@ add_action('wp_footer', function() {
     /* Rating */
     .intRate{color:rgb(85,155,214)!important;font-size:60px!important;font-weight:300!important;display:block!important;text-align:center!important;line-height:1.1!important}
     .textRate{color:rgb(85,155,214)!important;font-size:20px!important;display:block!important;text-align:center!important}
-    .inbx-ratshop{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;position:relative!important;top:60px!important}
+    .inbx-ratshop{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;margin-top:20px!important}
     .inbx-midRight{margin:0 0 30px 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important}
     /* Product title */
     .inbx-midhding{border:none!important;padding:0 0 0 67px!important;margin-bottom:20px!important;font-size:20px!important}
