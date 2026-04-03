@@ -272,9 +272,11 @@ add_action('wp_footer', function() {
     .s-productsUp .btn1.btn1mod .amazon-logo{height:22px!important;filter:brightness(0) invert(1)!important;vertical-align:middle!important;margin-top:2px!important}
     /* Best Overall section */
     .s2sub-hding{color:#fff!important;background-color:#5d5d5d!important;padding:24px 0 24px 21px!important;border:none!important;letter-spacing:1px!important;margin:40px 0 0 0!important;font-size:24px!important}
-    .best-overall-list{list-style:none!important;padding:0 0 0 67px!important;margin:0!important}
-    .best-overall-list li{font-size:16px!important;color:#4b4b4b!important;padding:4px 0 4px 24px!important;position:relative!important;list-style:none!important;background:none!important}
-    .best-overall-list li:before{content:'✓'!important;color:rgb(110,151,155)!important;font-weight:700!important;position:absolute!important;left:0!important}
+    .s2sub-hding+.sec2-box1 .inbx-mid{min-height:400px!important;padding-left:30px!important}
+    .s2sub-hding+.sec2-box1 .inbx-midhding{padding-left:37px!important}
+    .best-overall-list{list-style:none!important;padding:10px 0 0 37px!important;margin:0!important}
+    .best-overall-list li{font-size:17px!important;color:#4b4b4b!important;padding:8px 0 8px 28px!important;position:relative!important;list-style:none!important;background:none!important}
+    .best-overall-list li:before{content:'✓'!important;color:rgb(110,151,155)!important;font-weight:700!important;position:absolute!important;left:0!important;font-size:18px!important}
     /* Rating */
     .intRate{color:rgb(85,155,214)!important;font-size:60px!important;font-weight:300!important;display:block!important;text-align:center!important;line-height:1.1!important}
     .textRate{color:rgb(85,155,214)!important;font-size:20px!important;display:block!important;text-align:center!important}
