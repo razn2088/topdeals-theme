@@ -123,7 +123,7 @@ $theme_uri = get_template_directory_uri();
                                 <span class="textRate"><?php echo esc_html($product['rating_text']); ?></span>
                             </div>
                             <div class="inbx-rgt">
-                                <a href="<?php echo esc_url($product['url']); ?>" target="_blank" class="btn1"><span class="btn-text">Shop on</span> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo"></a>
+                                <a href="<?php echo esc_url($product['url']); ?>" target="_blank" class="btn1"><b>Shop Now</b></a>
                             </div>
                         </div>
                     </div>
@@ -157,13 +157,76 @@ $theme_uri = get_template_directory_uri();
                         <div class="right-col">
                             <p><?php echo nl2br(esc_html($featured['product_description'])); ?></p>
                             <?php if (!empty($featured['product_url'])) : ?>
-                            <a href="<?php echo esc_url($featured['product_url']); ?>" class="btn1 btn1mod" target="_blank"><span class="btn-text">Shop on</span> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo"></a>
+                            <a href="<?php echo esc_url($featured['product_url']); ?>" class="btn1 btn1mod" target="_blank"><b>Shop Now</b></a>
                             <?php endif; ?>
                         </div>
                     </div>
                 </article>
                 <?php endif; ?>
             </section>
+            <?php endif; ?>
+
+            <!-- Best Overall Section -->
+            <?php
+            $best_overall = get_post_meta(get_the_ID(), '_topdeals_best_overall', true) ?: [];
+            $bo_heading = !empty($best_overall['heading']) ? $best_overall['heading'] : '';
+            $bo_bullets = !empty($best_overall['bullets']) ? array_filter(explode("\n", $best_overall['bullets'])) : [];
+            if (!empty($bo_heading) && !empty($products[0])) :
+                $bp = $products[0]; // Use first product data
+            ?>
+            <h2 class="s2sub-hding"><?php echo esc_html($bo_heading); ?></h2>
+            <div class="sec2-box1 dsplay">
+                <div class="s2bx1-inbx1 dsplay box-1">
+                    <div class="box-top">
+                        <div class="one-box">
+                            <div class="one box-nr-1 ribbon">
+                                <a href="<?php echo esc_url($bp['url']); ?>" target="_blank" style="color:inherit;"><span>#1</span> <?php echo esc_html(!empty($bp['badge_text']) ? $bp['badge_text'] : 'Our Pick'); ?></a>
+                            </div>
+                        </div>
+                        <div class="inbx-lft">
+                            <a href="<?php echo esc_url($bp['url']); ?>" target="_blank" style="color:inherit;">
+                                <img src="<?php echo esc_url($bp['image']); ?>" class="inbx-logo1">
+                            </a>
+                            <?php if (!empty($bp['rating_stars'])) : ?>
+                            <a href="<?php echo esc_url($bp['url']); ?>" class="rating">
+                                <div class="stars" style="--rating: <?php echo esc_attr($bp['rating_stars']); ?>;" aria-label="Rating of this product is <?php echo esc_attr($bp['rating_stars']); ?> out of 5."></div>
+                            </a>
+                            <?php endif; ?>
+                            <p class="inbx-lfttxt">
+                                <span><a href="<?php echo esc_url($bp['url']); ?>" target="_blank" style="color:inherit;">Read Full Review</a></span><br>
+                                <?php if (!empty($bp['reviews_count'])) : ?>
+                                <a href="<?php echo esc_url($bp['url']); ?>" target="_blank" style="color:inherit;"><?php echo esc_html($bp['reviews_count']); ?> Reviews</a>
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                        <div class="inbx-midRight-mb">
+                            <span class="intRate"><?php echo esc_html($bp['rating_num']); ?></span>
+                            <span class="textRate"><?php echo esc_html($bp['rating_text']); ?></span>
+                        </div>
+                        <div class="inbx-mid">
+                            <p class="inbx-midhding"><a href="<?php echo esc_url($bp['url']); ?>" target="_blank" style="color:inherit;"><?php echo esc_html($bp['name']); ?></a></p>
+                            <div class="indx-midsbhding">
+                                <?php if (!empty($bo_bullets)) : ?>
+                                <ul class="best-overall-list">
+                                    <?php foreach ($bo_bullets as $bullet) : ?>
+                                    <li><?php echo esc_html(trim($bullet)); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="inbx-ratshop">
+                            <div class="inbx-midRight">
+                                <span class="intRate"><?php echo esc_html($bp['rating_num']); ?></span>
+                                <span class="textRate"><?php echo esc_html($bp['rating_text']); ?></span>
+                            </div>
+                            <div class="inbx-rgt">
+                                <a href="<?php echo esc_url($bp['url']); ?>" target="_blank" class="btn1"><b>Shop Now</b></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php endif; ?>
 
         </div>

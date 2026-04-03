@@ -29,6 +29,7 @@ function topdeals_add_meta_boxes() {
     add_meta_box('topdeals_hero', 'Hero Section', 'topdeals_hero_metabox', 'page', 'normal', 'high');
     add_meta_box('topdeals_products', 'Products (up to 10)', 'topdeals_products_metabox', 'page', 'normal', 'high');
     add_meta_box('topdeals_featured', 'Featured Product Section', 'topdeals_featured_metabox', 'page', 'normal', 'high');
+    add_meta_box('topdeals_best_overall', 'Best Overall Section', 'topdeals_best_overall_metabox', 'page', 'normal', 'high');
     add_meta_box('topdeals_footer', 'Footer Settings', 'topdeals_footer_metabox', 'page', 'normal', 'default');
 }
 
@@ -163,6 +164,23 @@ function topdeals_footer_metabox($post) {
     <?php
 }
 
+// Best Overall Metabox
+function topdeals_best_overall_metabox($post) {
+    $bo = get_post_meta($post->ID, '_topdeals_best_overall', true) ?: [];
+    $defaults = [
+        'heading' => 'Best Overall',
+        'bullets' => '',
+    ];
+    $bo = wp_parse_args($bo, $defaults);
+    ?>
+    <p><em>This section appears at the bottom and showcases Product #1 with bullet-point features.</em></p>
+    <table class="form-table">
+        <tr><th>Section Heading</th><td><input type="text" name="best_overall[heading]" value="<?php echo esc_attr($bo['heading']); ?>" class="large-text" placeholder="Best Overall"></td></tr>
+        <tr><th>Bullet Points (one per line)</th><td><textarea name="best_overall[bullets]" class="large-text" rows="8" placeholder="Hydrating Formula&#10;Eliminates Chlorine Scent&#10;Natural Ingredients"><?php echo esc_textarea($bo['bullets']); ?></textarea></td></tr>
+    </table>
+    <?php
+}
+
 // Save Meta Boxes
 add_action('save_post', function ($post_id) {
     if (!isset($_POST['topdeals_nonce']) || !wp_verify_nonce($_POST['topdeals_nonce'], 'topdeals_save')) return;
@@ -205,6 +223,13 @@ add_action('save_post', function ($post_id) {
             'product_url' => esc_url_raw($feat['product_url']),
         ]);
     }
+    if (isset($_POST['best_overall'])) {
+        $bo = $_POST['best_overall'];
+        update_post_meta($post_id, '_topdeals_best_overall', [
+            'heading' => sanitize_text_field($bo['heading']),
+            'bullets' => sanitize_textarea_field($bo['bullets']),
+        ]);
+    }
     if (isset($_POST['footer_data'])) {
         $f = $_POST['footer_data'];
         update_post_meta($post_id, '_topdeals_footer', [
@@ -237,15 +262,15 @@ add_action('wp_footer', function() {
     .s1txt2 .span2{color:rgba(255,255,255,.7)!important;font-size:16px!important;text-decoration:underline!important}
     .s1txt2 .s1txt2__right{color:#fff!important}
     /* Product box buttons */
-    .s2bx1-inbx1 .btn1{height:50px!important;width:190px!important;max-width:190px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;color:#fff!important;text-align:center!important;line-height:50px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;text-decoration:none!important;padding:0 15px!important;margin:0!important}
-    .s2bx1-inbx1 .btn1 .btn-text{font-weight:700!important;font-size:16px!important;line-height:1!important}
-    .s2bx1-inbx1 .btn1 .amazon-logo{height:20px!important;filter:brightness(0) invert(1)!important;vertical-align:baseline!important;margin-top:2px!important}
+    .s2bx1-inbx1 .btn1{height:50px!important;width:190px!important;max-width:190px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;color:#fff!important;text-align:center!important;line-height:50px!important;display:inline-block!important;text-decoration:none!important;padding:0 15px!important;margin:0!important;font-weight:700!important}
     .s2bx1-inbx1 .btn1:hover{background:rgb(90,131,135)!important;color:#fff!important}
-    .s2bx1-inbx1 .btn1 img[alt="chevron icon"]{width:10px!important;height:16px!important;vertical-align:middle!important}
     /* Featured button */
-    .s-productsUp .btn1.btn1mod{width:210px!important;max-width:210px!important;height:50px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;line-height:50px!important;padding:0 15px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
-    .s-productsUp .btn1.btn1mod .btn-text{font-weight:700!important;font-size:16px!important;line-height:1!important}
-    .s-productsUp .btn1.btn1mod .amazon-logo{height:20px!important;filter:brightness(0) invert(1)!important;vertical-align:baseline!important;margin-top:2px!important}
+    .s-productsUp .btn1.btn1mod{width:210px!important;max-width:210px!important;height:50px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;line-height:50px!important;padding:0 15px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:inline-block!important;font-weight:700!important}
+    /* Best Overall section */
+    .s2sub-hding{color:#fff!important;background-color:#5d5d5d!important;padding:24px 0 24px 21px!important;border:none!important;letter-spacing:1px!important;margin:40px 0 0 0!important;font-size:24px!important}
+    .best-overall-list{list-style:none!important;padding:0 0 0 67px!important;margin:0!important}
+    .best-overall-list li{font-size:16px!important;color:#4b4b4b!important;padding:4px 0 4px 24px!important;position:relative!important;list-style:none!important;background:none!important}
+    .best-overall-list li:before{content:'✓'!important;color:rgb(110,151,155)!important;font-weight:700!important;position:absolute!important;left:0!important}
     /* Rating */
     .intRate{color:rgb(85,155,214)!important;font-size:60px!important;font-weight:300!important;display:block!important;text-align:center!important;line-height:1.1!important}
     .textRate{color:rgb(85,155,214)!important;font-size:20px!important;display:block!important;text-align:center!important}
