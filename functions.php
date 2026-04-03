@@ -237,13 +237,15 @@ add_action('wp_footer', function() {
     .s1txt2 .span2{color:rgba(255,255,255,.7)!important;font-size:16px!important;text-decoration:underline!important}
     .s1txt2 .s1txt2__right{color:#fff!important}
     /* Product box buttons */
-    .s2bx1-inbx1 .btn1{height:50px!important;width:176px!important;max-width:176px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:15px!important;color:#fff!important;text-align:center!important;line-height:50px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;text-decoration:none!important;padding:0 12px!important;margin:0!important}
-    .s2bx1-inbx1 .btn1 .amazon-logo{height:18px!important;vertical-align:middle!important;filter:brightness(0) invert(1)!important}
+    .s2bx1-inbx1 .btn1{height:50px!important;width:190px!important;max-width:190px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;color:#fff!important;text-align:center!important;line-height:50px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;text-decoration:none!important;padding:0 15px!important;margin:0!important}
+    .s2bx1-inbx1 .btn1 .btn-text{font-weight:700!important;font-size:16px!important;line-height:1!important}
+    .s2bx1-inbx1 .btn1 .amazon-logo{height:20px!important;filter:brightness(0) invert(1)!important;vertical-align:baseline!important;margin-top:2px!important}
     .s2bx1-inbx1 .btn1:hover{background:rgb(90,131,135)!important;color:#fff!important}
     .s2bx1-inbx1 .btn1 img[alt="chevron icon"]{width:10px!important;height:16px!important;vertical-align:middle!important}
     /* Featured button */
-    .s-productsUp .btn1.btn1mod{width:200px!important;max-width:200px!important;height:50px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:15px!important;line-height:50px!important;padding:0 12px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important}
-    .s-productsUp .btn1.btn1mod .amazon-logo{height:18px!important;filter:brightness(0) invert(1)!important}
+    .s-productsUp .btn1.btn1mod{width:210px!important;max-width:210px!important;height:50px!important;background:rgb(110,151,155)!important;border-radius:10px!important;font-size:16px!important;line-height:50px!important;padding:0 15px!important;margin:39px 0 0 14px!important;color:#fff!important;text-decoration:none!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+    .s-productsUp .btn1.btn1mod .btn-text{font-weight:700!important;font-size:16px!important;line-height:1!important}
+    .s-productsUp .btn1.btn1mod .amazon-logo{height:20px!important;filter:brightness(0) invert(1)!important;vertical-align:baseline!important;margin-top:2px!important}
     /* Rating */
     .intRate{color:rgb(85,155,214)!important;font-size:60px!important;font-weight:300!important;display:block!important;text-align:center!important;line-height:1.1!important}
     .textRate{color:rgb(85,155,214)!important;font-size:20px!important;display:block!important;text-align:center!important}
